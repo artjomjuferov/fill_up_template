@@ -1,0 +1,72 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', 'sinonjs' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.37
+4 verbose node symlink /usr/bin/node
+5 warn package.json FillInfo@1.0.0 No description
+6 warn package.json FillInfo@1.0.0 No repository field.
+7 warn package.json FillInfo@1.0.0 No README data
+8 verbose readDependencies using package.json deps
+9 verbose cache add [ 'sinonjs', null ]
+10 verbose cache add name=undefined spec="sinonjs" args=["sinonjs",null]
+11 verbose parsed url { protocol: null,
+11 verbose parsed url   slashes: null,
+11 verbose parsed url   auth: null,
+11 verbose parsed url   host: null,
+11 verbose parsed url   port: null,
+11 verbose parsed url   hostname: null,
+11 verbose parsed url   hash: null,
+11 verbose parsed url   search: null,
+11 verbose parsed url   query: null,
+11 verbose parsed url   pathname: 'sinonjs',
+11 verbose parsed url   path: 'sinonjs',
+11 verbose parsed url   href: 'sinonjs' }
+12 silly lockFile f527ab67-sinonjs sinonjs
+13 verbose lock sinonjs /home/artjom/.npm/f527ab67-sinonjs.lock
+14 silly lockFile f527ab67-sinonjs sinonjs
+15 silly lockFile f527ab67-sinonjs sinonjs
+16 verbose addNamed [ 'sinonjs', '' ]
+17 verbose addNamed [ null, '*' ]
+18 silly lockFile d283d699-sinonjs sinonjs@
+19 verbose lock sinonjs@ /home/artjom/.npm/d283d699-sinonjs.lock
+20 silly addNameRange { name: 'sinonjs', range: '*', hasData: false }
+21 verbose request where is /sinonjs
+22 verbose request registry https://registry.npmjs.org/
+23 verbose request id 34919948563b7f2d
+24 verbose url raw /sinonjs
+25 verbose url resolving [ 'https://registry.npmjs.org/', './sinonjs' ]
+26 verbose url resolved https://registry.npmjs.org/sinonjs
+27 verbose request where is https://registry.npmjs.org/sinonjs
+28 info trying registry request attempt 1 at 14:58:35
+29 http GET https://registry.npmjs.org/sinonjs
+30 http 404 https://registry.npmjs.org/sinonjs
+31 silly registry.get cb [ 404,
+31 silly registry.get   { 'content-type': 'application/json',
+31 silly registry.get     'cache-control': 'max-age=0',
+31 silly registry.get     'content-length': '2',
+31 silly registry.get     'accept-ranges': 'bytes',
+31 silly registry.get     date: 'Mon, 11 Jan 2016 12:58:45 GMT',
+31 silly registry.get     via: '1.1 varnish',
+31 silly registry.get     age: '0',
+31 silly registry.get     connection: 'keep-alive',
+31 silly registry.get     'x-served-by': 'cache-fra1229-FRA',
+31 silly registry.get     'x-cache': 'MISS',
+31 silly registry.get     'x-cache-hits': '0',
+31 silly registry.get     'x-timer': 'S1452517124.589288,VS0,VE688' } ]
+32 silly lockFile d283d699-sinonjs sinonjs@
+33 silly lockFile d283d699-sinonjs sinonjs@
+34 error 404 Not Found
+34 error 404
+34 error 404 'sinonjs' is not in the npm registry.
+34 error 404 You should bug the author to publish it
+34 error 404 It was specified as a dependency of 'FillInfo'
+34 error 404
+34 error 404 Note that you can also install from a
+34 error 404 tarball, folder, or http url, or git url.
+35 error System Linux 3.16.0-30-generic
+36 error command "/usr/bin/node" "/usr/bin/npm" "install" "sinonjs"
+37 error cwd /home/artjom/RubymineProjects/FillInfo
+38 error node -v v0.10.37
+39 error npm -v 1.4.28
+40 error code E404
+41 verbose exit [ 1, true ]

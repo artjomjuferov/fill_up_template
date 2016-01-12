@@ -1,0 +1,14 @@
+{
+  "name": "FillInfo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha --compilers coffee:coffee-script/register --require tests/chai.js  tests/*_spec.coffee"
+  },
+  "author": "",
+  "license": "ISC"
+}
