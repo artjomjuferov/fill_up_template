@@ -1,6 +1,8 @@
 factoryGirl = require 'factory-girl'
 faker = require 'faker'
 
+User = require '../coffee_files/user.coffee'
+
 getFakeAddress = ->
   address = "#{faker.address.country()}"
   address.concat ", #{faker.address.streetAddress()}"

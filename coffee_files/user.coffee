@@ -1,12 +1,17 @@
-_ = require "underscore"
-
 class User
   constructor: (options) ->
-    updateInfo options
+    options = {} unless options?
+    @updateInfo options
     @id = Date.now()
 
   updateInfo: (options) ->
-    { @name, @surname, @address, @email } = options
+    { @name, @surname, @address, @email, @password } = options
+    @validate()
 
+  validate: ->
+    @isValid = true
+
+
+module.exports = User
 
 
