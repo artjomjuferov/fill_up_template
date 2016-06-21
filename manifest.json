@@ -14,6 +14,12 @@
       "js/bg.js"
     ]
   },
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true,
+    "open_in_tab": true
+  },
+  "options_page": "options.html",
   "content_scripts":
   [
     {

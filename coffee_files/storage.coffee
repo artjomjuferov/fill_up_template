@@ -7,19 +7,40 @@ class StorageCreator
       else new DevStorage()
 
 
-
 class Storage
-  @data = {}
 
-  @write: (nameInStorage, value) ->
+  @set: (nameInStorage, value, callback=undefined) ->
     return false if !nameInStorage? or !value?
-    @data[nameInStorage] = value
-    @updateStorage()
+    try
+      write nameInStorage, JSON.stringify(value), callback
+    catch err
+      return false
     return true
 
-  @read: (nameInStorage) ->
-    @updateData() if nameInStorage?
-    return @data[nameInStorage]
+  @get: (nameInStorage) ->
+    return unless nameInStorage?
+    try
+      JSON.parse(read nameInStorage)
+    catch err
+      return
+
+
+
+class ChromeStorage extends Storage
+  instance = null
+
+  class PrivateClass
+    write: (nameInStorage, value, callback) ->
+      chrome.storage.sync.set({nameInStorage: value}, callback)
+    read: (nameInStorage) ->
+      self = @
+      chrome.storage.sync.get nameInStorage, (value)->
+        self.gottenValue = value
+      @gottenValue
+
+  @get: () ->
+    instance ?= new PrivateClass
+
 
 
 class LocalStorage extends Storage
@@ -27,6 +48,18 @@ class LocalStorage extends Storage
     localStorage[nameInStorage] = value
   @read: (nameInStorage) ->
     localStorage[nameInStorage]
+
+  @updateStorage: ->
+    try
+      fs.writeFileSync @storageFilePath, JSON.stringify(@data)
+    catch err
+      throw err
+
+  @updateData: ->
+    try
+      @data = JSON.parse(fs.readFileSync @storageFilePath, 'utf8')
+    catch err
+      throw err
 
 
 class DevStorage extends Storage
@@ -44,18 +77,9 @@ class DevStorage extends Storage
     catch err
       throw err
 
-class SqlStorage extends Storage
-  @write: (nameInStorage, value) ->
-    localStorage[nameInStorage] = value
-  @read: (nameInStorage) ->
-    localStorage[nameInStorage]
 
 
-class ChromeStorage extends Storage
-  @write: (nameInStorage, value) ->
-    localStorage[nameInStorage] = value
-  @read: (nameInStorage) ->
-    localStorage[nameInStorage]
+
 
 module.exports =
   creator: StorageCreator,

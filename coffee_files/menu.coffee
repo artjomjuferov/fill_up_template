@@ -1,25 +1,37 @@
 class Menu
 
-  constructor: ->
-    @users = getFromStorage('users') || []
-    @current_user = getFromStorage('current_user_id')
+  instance = null
 
-  make_current_user: (user)->
-    setInStorage('current_user_id', user.id)
+  class PrivateClass
+    constructor: () ->
+      @storage = ChromeStorage
+      @users = @storage.getUsers() || []
+      @currentUser = @storage.getCurrentUser()
 
-  get_current_user: (id) ->
-    _.find @users, (user) -> user.id is id
+    setCurrentUser: (userId)->
+      currentUser = getUser(userId)
+      @storage.setCurrentUser(currentUser)
 
-  setInStorage: (nameInStorage, value) ->
-    localStorage[nameInStorage] = value
+    getCurrentUser: (id) ->
+      user = getUser id
+      user ||= @users[0]
+      @currentUser
 
-  getFromStorage: (nameInStorage) ->
-    localStorage[nameInStorage]
+    getUser: (id) ->
+      for el in arr
+        return el if user.id is id
 
-  @addUser: (user) ->
-    @users << user
+    addUser: (options) ->
+      @users << user
 
-  @deleteUser: (user) ->
-    @users = (currentUser for currentUser in @users when currentUser.id != user.id)
+    deleteUser: (user) ->
+      @users = (currentUser for currentUser in @users when currentUser.id != user.id)
+
+
+  @get: () ->
+    instance ?= new PrivateClass
+
+
+
 
 module.exports = Menu
